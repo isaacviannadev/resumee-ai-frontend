@@ -26,12 +26,15 @@ export default function Summary({ searchParams }: SearchParamsProps) {
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:5001/summarize?url=${searchParams.url}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+    fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/summarize?url=${searchParams.url}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
       .then((res) => res.json())
       .then((response: SummarizeResult) => {
         setData(response);
