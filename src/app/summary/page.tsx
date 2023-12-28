@@ -65,7 +65,7 @@ export default function Summary({ searchParams }: SearchParamsProps) {
           </h1>
         </>
       )}
-      {!isLoading && (
+      {!isLoading && !isError && (
         <div className="flex flex-col w-full gap-6 md:flex-row text-white">
           <div className="basis-1/2">
             <YouTubeVideo videoURL={searchParams.url as string} />
